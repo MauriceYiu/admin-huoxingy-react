@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    min-width: 1120px;
+}
+#root{
+    width: 100%;
+    height: 100%;
+}
+a{
+    text-decoration: none;
+}
+ul li{
+    list-style: none;
+}
+input,button{
+    outline: none;
+    border:none;
+}
+.clearfix:before,
+.clearfix:after{
+    content: '';
+    display: block;    
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    clear: both;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
