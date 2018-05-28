@@ -62,11 +62,13 @@ class Login extends Component {
             password: e.target.value
         });
     }
+    // 按压enter键进行登录
     handleKeyDown(e) {
         if (e.keyCode === 13) {
             this.loginFun();
         }
     }
+    // 登录函数 用用户名和密码做权限验证，引入Base64 加密token
     async loginFun() {
         const username = this.state.username;
         const password = this.state.password;

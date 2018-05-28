@@ -32,6 +32,7 @@ class Store extends Component {
             </div>
         );
     }
+    // 此处的myScroll用了第三方插件iscroll
     async componentDidMount() {
         try {
             let storeList = await getStoreList();
