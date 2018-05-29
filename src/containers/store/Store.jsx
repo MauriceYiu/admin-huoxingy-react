@@ -42,10 +42,20 @@ class Store extends Component {
             let myScroll = new IScroll('.store-list', {
                 mouseWheel: true
             });
-            console.log(storeList);
         } catch (error) {
             console.log(error);
         }
+        // getStoreList().then(res=>{
+        //     console.log(res);
+        //     let storeList = res;
+        //     this.setState({
+        //         storeList:storeList
+        //     });
+        //     let myScroll = new IScroll('.store-list', {
+        //         mouseWheel: true
+        //     });
+        //     console.log("先拿到的：" + storeList);
+        // });
     }
     goInnerIndex(item) {
         console.log(item);

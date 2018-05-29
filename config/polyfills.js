@@ -26,3 +26,7 @@ require('babel-polyfill');
 // 如果ie9、10提示动画框架、React depends on requestAnimationFrame等等的话
 require('raf/polyfill');
 
+var promise = require('es6-promise');
+promise.polyfill();
+
+

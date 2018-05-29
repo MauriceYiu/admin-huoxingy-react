@@ -2,7 +2,7 @@ import axios from 'axios';
 import catchError from './../utils/catchError'
 
 var instance = axios.create({
-    baseURL: 'https://api.huoxingy.com/v1/admin/'
+    // baseURL: 'https://api.huoxingy.com/v1/admin/'
 });
 
 instance.defaults.headers.post['Content-Type'] = 'application/json';
