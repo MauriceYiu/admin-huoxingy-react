@@ -1,0 +1,107 @@
+#statement {
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    .yesterday-statement {
+        width: 100%;
+        height: 45%;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+        position: relative;
+        .state-name {
+            display: inline-block;
+            width: 100px;
+            height: 35px;
+            color: #fff;
+            text-align: center;
+            position: absolute;
+            top: 5%;
+            left: 2%;
+            line-height: 35px;
+            border-radius: 25px;
+            background: #1890ff;
+        }
+        .yesterday-statement-pie {
+            width: 40%;
+            height: 100%;
+        }
+        .yesterday-statement-info {
+            width: 100%;
+            height: 100%;
+            padding-left: 40%;
+            background: #fff;
+            ul {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+                padding: 5px;
+                .info-item {
+                    background: #fff;
+                    width: 19%;
+                    height: 100%;
+                    cursor: pointer;
+                    border-radius: 15px;
+                    box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+                    text-align: center;
+                    max-height: 200px;
+                    position: relative;
+                    margin-right: 15px;
+                    .info-name {
+                        font-size: 20px;
+                        font-weight: 600;
+                        position: absolute;
+                        line-height: 0;
+                        top: 30px;
+                        left: 0;
+                        right: 0;
+                    }
+                    .info-num {
+                        font-size: 45px;
+                        color: #ec6969;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        right: 0;
+                        margin-top: -35px;
+                    }
+                    .info-desc {
+                        font-size: 16px;
+                        position: absolute;
+                        line-height: 0;
+                        bottom: 30px;
+                        left: 0;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+    .last-7days-statement {
+        width: 100%;
+        height: 48%;
+        margin-top: 2%;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+        position: relative;
+        .state-name {
+            display: inline-block;
+            width: 100px;
+            height: 35px;
+            color: #fff;
+            text-align: center;
+            position: absolute;
+            top: 5%;
+            left: 2%;
+            line-height: 35px;
+            border-radius: 25px;
+            background: #1890ff;
+        }
+        .last-7days-statement-bar{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
