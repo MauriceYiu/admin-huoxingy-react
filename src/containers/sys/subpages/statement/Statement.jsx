@@ -163,9 +163,23 @@ class Statement extends Component {
             // Declare several bar series, each will be mapped
             // to a column of dataset.source by default.
             series: [
-                { type: 'bar', barWidth: '10%' },
-                { type: 'bar', barWidth: '10%' },
-                { type: 'line'},
+                {
+                    type: 'bar', barWidth: '10%', label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
+                    }
+                },
+                {
+                    type: 'bar', barWidth: '10%', label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
+                    }
+                },
+                { type: 'line' },
             ]
         });
     }

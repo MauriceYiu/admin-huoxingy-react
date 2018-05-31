@@ -19,10 +19,28 @@ class NavHeader extends Component {
         const { showLogInfo, username, storeInfo } = this.state;
         const date = new Date(storeInfo.addTime);
         const createTime = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+        const pathname = this.props.router.location.pathname;
+        const routeInfo = pathname.split('/');
+        let breadCrumbInfo = '';
+        let breadCrumbIcon;
+        switch (routeInfo[routeInfo.length-1]) {
+            case 'employee':
+                breadCrumbIcon = <Icon type="team" />;
+                breadCrumbInfo = '员工管理 / 员工列表';
+                break;
+            case 'achievement':
+                breadCrumbIcon = <Icon type="team" />;
+                breadCrumbInfo = '员工管理 / 员工业绩';
+                break;
+            default:
+                breadCrumbIcon = <Icon type="home" />
+                breadCrumbInfo = '首页';
+                break;
+        }
         return (
             <div id="nav-header">
                 <span>
-                    <Icon type="home" />首页
+                    {breadCrumbIcon}{breadCrumbInfo}
                 </span>
                 <span className="right" onClick={this.doShowLogInfo}>
                     <Icon type="user" />
