@@ -1,43 +1,62 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     user-select: none;
 }
-body,html{
+
+body,
+html {
     width: 100%;
     height: 100%;
 }
-body{
+
+body {
     min-width: 1120px;
 }
-#root{
+
+#root {
     width: 100%;
     height: 100%;
 }
-a{
+
+a {
     text-decoration: none;
 }
-ul li{
+
+ul li {
     list-style: none;
 }
-input,button{
+
+input,
+button {
     outline: none;
-    border:none;
+    border: none;
 }
+
 .clearfix:before,
-.clearfix:after{
+.clearfix:after {
     content: '';
-    display: block;    
+    display: block;
     height: 0;
     line-height: 0;
     overflow: hidden;
     visibility: hidden;
     clear: both;
 }
-.left{
+
+.left {
     float: left;
 }
-.right{
+
+.right {
     float: right;
+}
+
+.ant-modal-mask {
+    z-index: 10000 !important;
+}
+
+.ant-modal-wrap {
+    z-index: 100001 !important;
 }
