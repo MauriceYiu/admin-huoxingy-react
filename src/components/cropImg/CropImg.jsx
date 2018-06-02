@@ -20,14 +20,14 @@ class CropImg extends Component {
     render() {
         let imgBase = this.props.imgBase;
         return (
-            <div id="crop-img">
-                <div className="img-wrap">
+            <div id="crop-img" onClick={this.props.cancelCrop}>
+                <div className="img-wrap" onClick={(e) => e.stopPropagation()}>
                     <div className="wrap-tit">图片裁剪</div>
                     <div className="img">
                         <img src={imgBase} alt="" id="img-for-crop" />
                     </div>
                     <div className="crop-button">
-                        <button className="cancel">取消</button>
+                        <button className="cancel" onClick={this.props.cancelCrop}>取消</button>
                         <button className="crop" onClick={this.crop}>裁剪</button>
                     </div>
                 </div>
@@ -39,23 +39,25 @@ class CropImg extends Component {
         let imgObj = new Image();
         imgObj.src = imgBase;
 
-        console.log(imgObj.width);
-
-        if (imgObj.width / imgObj.height > 4 / 3) {
-            $('#img-for-crop').width(400);
-            this.setState({
-                scale: imgObj.width / 400
-            });
-        } else {
-            $('#img-for-crop').height(300);
-            this.setState({
-                scale: imgObj.height / 300
-            });
+        imgObj.onload = () => {
+            console.log(imgObj.width);
+            if (imgObj.width / imgObj.height > 4 / 3) {
+                $('#img-for-crop').width(400);
+                this.setState({
+                    scale: imgObj.width / 400
+                });
+            } else {
+                $('#img-for-crop').height(300);
+                this.setState({
+                    scale: imgObj.height / 300
+                });
+            }
+            console.log("scale" + this.state.scale);
+            this.initCrop();
         }
-        console.log("scale"+this.state.scale);
-        this.initCrop();
+
     }
-    
+
     initCrop() {
         const { cropImgWidth, cropImgHeight } = this.props;
         let jcrop_api,
@@ -88,11 +90,19 @@ class CropImg extends Component {
             }
         };
     }
-    crop() {
+    async crop() {
         let storeId = localStorage.getItem('storeId');
         // 如果没有裁切图片的话，直接保存原图片
         if (!this.state.startX && !this.state.imgWidth) {
-            upBossPayCode(storeId, this.props.imgBase)
+            upBossPayCode(storeId, this.props.imgBase);
+            let res;
+            try {
+                res = await upBossPayCode(storeId, this.props.imgBase);
+                this.props.getCropImgUrl(res.path);
+                return;
+            } catch (error) {
+                console.log(error);
+            }
             return;
         }
 
@@ -106,11 +116,17 @@ class CropImg extends Component {
         let img = new Image();
         img.setAttribute('crossOrigin', 'anonymous');
         img.src = this.props.imgBase;
-        img.onload = () => {
+        img.onload = async () => {
             canvas.width = cropImgWidth;
             canvas.height = cropImgHeight;
             ctx.drawImage(img, scale * startX, scale * startY, scale * imgWidth, scale * imgHeight, 0, 0, cropImgWidth, cropImgHeight);
-            upBossPayCode(storeId, canvas.toDataURL());
+            let res;
+            try {
+                res = await upBossPayCode(storeId, canvas.toDataURL());
+                this.props.getCropImgUrl(res.path);
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 }

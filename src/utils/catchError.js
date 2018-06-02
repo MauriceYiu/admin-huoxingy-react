@@ -27,6 +27,9 @@ export default function (error) {
             case 404:
                 errInfo = "请尽快上传资料";
                 break;
+            case 400:
+                errInfo = "店员已存在";
+                break;
             default:
                 errInfo = "系统错误";
                 break;
