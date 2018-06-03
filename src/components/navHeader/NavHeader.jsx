@@ -18,12 +18,12 @@ class NavHeader extends Component {
     render() {
         const { showLogInfo, username, storeInfo } = this.state;
         const date = new Date(storeInfo.addTime);
-        const createTime = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+        const createTime = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
         const pathname = this.props.router.location.pathname;
         const routeInfo = pathname.split('/');
         let breadCrumbInfo = '';
         let breadCrumbIcon;
-        switch (routeInfo[routeInfo.length-1]) {
+        switch (routeInfo[routeInfo.length - 1]) {
             case 'employee':
                 breadCrumbIcon = <Icon type="team" />;
                 breadCrumbInfo = '员工管理 / 员工列表';
@@ -76,6 +76,11 @@ class NavHeader extends Component {
             username,
             storeInfo
         });
+    }
+    componentWillUnmount() {
+        this.setState = (state, callback) => {
+            return;
+        };
     }
 }
 

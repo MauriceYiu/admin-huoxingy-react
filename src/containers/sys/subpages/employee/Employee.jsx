@@ -478,6 +478,11 @@ class Employee extends Component {
             }
         }
     }
+    componentWillUnmount() {
+        this.setState = (state, callback) => {
+            return;
+        };
+    }
 }
 
 export default Employee;

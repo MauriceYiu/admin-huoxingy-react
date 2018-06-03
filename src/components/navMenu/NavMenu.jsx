@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './navMenu.scss';
 import { Menu, Icon } from 'antd';
+import queryString  from 'query-string';
 const SubMenu = Menu.SubMenu;
 
 class NavMenu extends Component {
@@ -25,8 +26,9 @@ class NavMenu extends Component {
     }
     render() {
         const defaultSelectedKeys = this.props.router.location.pathname;
-        const storeId = this.props.router.params.storeId;
-        const subName = this.props.router.location.query.subName;
+        const storeId = this.props.match.params.storeId;
+        const search= this.props.location.search;
+        const subName = queryString.parse(search).subName;
         return (
             <div id="nav-menu">
                 <Menu
@@ -70,7 +72,8 @@ class NavMenu extends Component {
             return;
         }
         if (keyPath.length > 1) {
-            this.props.router.push({ pathname: routerName, query: { subName: keyPath[keyPath.length-1] } });
+            // this.props.router.push({ pathname: routerName, query: { 'subName': keyPath[keyPath.length-1] } });
+            this.props.router.push(`${routerName}?subName=${keyPath[keyPath.length-1]}`);
         } else {
             this.props.router.push({ pathname: routerName });
             this.setState({

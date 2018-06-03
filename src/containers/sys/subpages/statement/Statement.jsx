@@ -67,13 +67,12 @@ class Statement extends Component {
     async componentDidMount() {
         // 将流失会员等li垂直居中
         this.yesterdayUl.style.paddingTop = this.yesterdayWrap.clientHeight * 0.25 + 'px';
-        const storeId = this.props.router.params.storeId;
+        const storeId = this.props.match.params.storeId;
         try {
             let sevStateInfo = await getStoreState(storeId);
             this.setState({
                 sevStateInfo
             });
-            console.log(sevStateInfo);
             this.initStatement();
         } catch (error) {
             console.log(error);
@@ -182,6 +181,11 @@ class Statement extends Component {
                 { type: 'line' },
             ]
         });
+    }
+    componentWillUnmount() {
+        this.setState = (state, callback) => {
+            return;
+        };
     }
 }
 

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import './store.scss';
 import { getStoreList } from './../../api/store';
+import {HashRouter} from 'react-router-dom';
 
 class Store extends Component {
     constructor(props) {
@@ -50,7 +51,12 @@ class Store extends Component {
         console.log(item);
         let storeId = item.id;
         localStorage.setItem('storeId', storeId);
-        this.props.router.push(`/sys/${storeId}`);
+        this.props.history.push(`/sys/${storeId}`);
+    }
+    componentWillUnmount() {
+        this.setState = (state, callback) => {
+            return;
+        };
     }
 }
 

@@ -77,7 +77,7 @@ class Login extends Component {
                     await login(data);
                     localStorage.setItem('token', authStr);
                     localStorage.setItem('username', username);
-                    this.props.router.push('/store');
+                    this.props.history.push('/store');
                 } catch (error) {
                     alertMessage.error(error);
                 }
@@ -85,6 +85,11 @@ class Login extends Component {
                 alertMessage.error('手机格式不正确...');
             }
         }
+    }
+    componentWillUnmount() {
+        this.setState = (state, callback) => {
+            return;
+        };
     }
 }
 
