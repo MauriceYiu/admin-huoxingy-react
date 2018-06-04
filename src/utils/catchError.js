@@ -1,8 +1,5 @@
 // 获取服务器响应code
 import {
-    hashHistory
-} from 'react-router';
-import {
     message
 } from 'antd';
 
@@ -19,7 +16,7 @@ export default function (error) {
             case 401:
                 // window.location.href = window.location.href.split('#')[0] + '#/login';
                 errInfo = "帐号失效，请重新登录";
-                hashHistory.push('/');
+                window.location.href = "/";
                 break;
             case 403:
                 errInfo = "权限不足";
