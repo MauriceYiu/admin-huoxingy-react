@@ -5,6 +5,8 @@ import { Menu, Dropdown, Button, Icon, Table, Modal, Select } from 'antd';
 import { getEmployeeList, getShopManInfo, saveBossCode, addEmp, getJobList } from './../../../../api/employee';
 import { norCodeImg } from './../../../../static/js/normalImg';
 import CropImg from './../../../../components/cropImg/CropImg';
+import store from './../../../../store/store';
+
 
 class Employee extends Component {
     constructor(props) {
@@ -216,7 +218,8 @@ class Employee extends Component {
                                 </span>
                                 <span className="emp-info-item" id="jobSel">
                                     <span><b>*</b>岗位</span>
-                                    <Select dropdownStyle={{ zIndex: 999999999 }} defaultValue={groupId} placeholder="请选择员工岗位" style={{ width: 120 }} onChange={(val) => this.setState({ groupId: val })}>
+                                    <Select dropdownStyle={{ zIndex: 999999999 }} value={groupId} placeholder="请选择员工岗位" style={{ width: 120 }}
+                                        onChange={(val) => this.setState({ groupId: val })}>
                                         {
                                             jobList.map((item, index) => {
                                                 return (
@@ -277,7 +280,8 @@ class Employee extends Component {
     }
     // 点击保存添加员工,其中的id原版需要用到uuid来创建一个id
     async addEmployee() {
-        const storeId = localStorage.getItem('storeId');
+        let storeId = localStorage.getItem('storeId');
+        storeId ? localStorage.getItem('storeId') : store.getState().storeInfo;
         const { code, mobile, name, target, wcCodeImgForEmp, aliCodeImgForEmp, groupId, nowMenuClick } = this.state;
         let wechatPayUrl, aliPayUrl;
         this.state.wcCodeImgForEmp === norCodeImg ? wechatPayUrl = '' : wechatPayUrl = wcCodeImgForEmp;
@@ -330,11 +334,6 @@ class Employee extends Component {
         } catch (error) {
             console.log(error);
         }
-    }
-    empSelJob(value) {
-        this.setState({
-            groupId: value
-        });
     }
     // 保存老板收款码
     async saveBossCode() {

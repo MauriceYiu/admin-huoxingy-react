@@ -1,0 +1,1 @@
+export const SAVE_STORE_INFO = 'SAVE_STORE_INFO';

@@ -155,3 +155,25 @@ export const disableEmp = (storeId) => {
         }
     });
 }
+// 员工业绩
+export const getEmployeeGrade = (storeId,year,month) => {
+    return instance({
+        url: 'employee-commission',
+        method: 'GET',
+        params:{
+            storeId,
+            year,
+            month
+        }
+    }).then(res => {
+        if (res) {
+            try {
+                if (res.status === 200) {
+                    return Promise.resolve(res.data);
+                }
+            } catch (error) {
+                return Promise.reject(error);
+            }
+        }
+    });
+}

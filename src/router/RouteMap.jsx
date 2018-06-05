@@ -63,6 +63,7 @@ class RouteMap extends Component {
                 <PrivateRouteForStore path='/store' component={Store} />
                 <Route path='/sys' exact render={() => <Redirect to="/login" />} />
                 <PrivateRoute path='/sys/:storeId' component={Sys} />
+                <Route path='*' exact render={() => <Redirect to="/login" />} />
             </Switch>
         );
     }

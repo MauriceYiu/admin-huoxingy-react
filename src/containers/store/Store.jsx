@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import './store.scss';
 import { getStoreList } from './../../api/store';
-import {HashRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as storeInfoActions from './../../actions/storeInfo';
 
 class Store extends Component {
     constructor(props) {
@@ -35,6 +37,7 @@ class Store extends Component {
     }
     // 此处的myScroll用了第三方插件iscroll
     async componentDidMount() {
+        console.log(this.props)
         try {
             let storeList = await getStoreList();
             this.setState({
@@ -48,9 +51,9 @@ class Store extends Component {
         }
     }
     goInnerIndex(item) {
-        console.log(item);
         let storeId = item.id;
         localStorage.setItem('storeId', storeId);
+        this.props.actions.saveStoreInfo(item.id);
         this.props.history.push(`/sys/${storeId}`);
     }
     componentWillUnmount() {
@@ -60,4 +63,20 @@ class Store extends Component {
     }
 }
 
-export default Store;
+const mapStateToProps = (state) => {
+    return {
+        storeInfo: state.storeInfo
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(storeInfoActions, dispatch)
+    }
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Store);

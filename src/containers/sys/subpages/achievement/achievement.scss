@@ -1,3 +1,48 @@
-#achievement{
-    
+#achievement {
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    .achievement-state {
+        width: 100%;
+        height: 100px;
+        line-height: 100px;
+        padding: 0 50px;
+        border-radius: 5px;
+        background: #fff;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+    }
+    .achievement-list {
+        margin-top: 2%;
+        width: 100%;
+        height: calc(90% - 100px);
+        border-radius: 5px;
+        background: #fff;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+        overflow: hidden;
+        .ant-pagination {
+            margin-right: 15px;
+        }
+        .ant-table-wrapper {
+            margin-right: -18px;
+        }
+    }
+    #modal-mask {
+        .sure-code {
+            text-align: center;
+            .sure-code-info {
+                color: rgb(248, 128, 128);
+            }
+            .code-inp {
+                input {
+                    border-bottom: 1px solid #ddd;
+                    text-align: center;
+                }
+                .get-sure-code {
+                    color: rgb(120, 213, 250);
+                    cursor: pointer;
+                }
+                padding: 15px 0;
+            }
+        }
+    }
 }
