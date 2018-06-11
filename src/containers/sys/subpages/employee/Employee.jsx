@@ -200,7 +200,16 @@ class Employee extends Component {
                             title={isAddEmp ? "添加员工" : "修改员工"}
                             visible={this.state.showEmpAddOrEdit}
                             onOk={this.addEmployee}
-                            onCancel={() => this.setState({ showEmpAddOrEdit: false, wcCodeImgForEmp: norCodeImg, aliCodeImgForEmp: norCodeImg })}
+                            onCancel={() => this.setState({ 
+                                showEmpAddOrEdit: false, 
+                                wcCodeImgForEmp: norCodeImg, 
+                                aliCodeImgForEmp: norCodeImg,
+                                code: '',
+                                groupId: '',
+                                mobile: '',
+                                name: '',
+                                target: 0
+                            })}
                             getContainer={() => document.getElementById('emp-add-edit')}
                         >
                             <div className="add-edit">

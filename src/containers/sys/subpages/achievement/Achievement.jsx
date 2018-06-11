@@ -60,9 +60,12 @@ class Achievement extends Component {
         const {nowMonth} = this.state;
         const empListRefHei = this.state.empListRefHei;
         const onChangeMonth = (date, dateString) => {
+            this.setState({
+                nowMonth:dateString
+            });
             console.log(date, dateString);
         }
-        const monthFormat = 'YYYY/MM';
+        const monthFormat = 'YYYY-MM';
         return (
             <div id="achievement">
                 <div className="achievement-state">
