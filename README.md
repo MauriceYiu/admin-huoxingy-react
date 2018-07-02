@@ -20,3 +20,8 @@ require('raf/polyfill');
 
 # babel的相关配置可在package中进行配置
 
+#提示：Can't call setState (or forceUpdate) on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method.
+##请在组件将要卸载时加入以下代码
+###this.setState = (state, callback) => {return;};
+
+
